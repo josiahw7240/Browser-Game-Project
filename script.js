@@ -59,6 +59,7 @@ function blackjackHit(){
         console.log(card);
         showCard(card, YOU)
         updateScore(card, YOU);
+        showScore(YOU)
     }
 }
 
@@ -112,4 +113,18 @@ function updateScore(card, activePlayer) {
     }
   
     console.log(activePlayer["score"]);
+  }
+
+  function showScore(activePlayer)
+  {
+      if(activePlayer['score'] > 21)
+      {
+          document.querySelector(activePlayer['scoreSpan']).textContent = 'Bust!';
+          document.querySelector(activePlayer['scoreSpan']).style.color ='red';
+      }
+
+      else 
+      {
+          document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
+      }
   }
