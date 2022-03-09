@@ -49,3 +49,15 @@ table, th, td
     padding: 10px;
     margin-bottom: 10px;
 }
+
+#win-header {
+  color: lightgreen;
+}
+
+#loss-header {
+    color: darkred;
+}
+
+#draw-header {
+    color: yellow;
+}
