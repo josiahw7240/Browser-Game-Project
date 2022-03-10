@@ -49,9 +49,9 @@ const DEALER = blackJackGame['dealer']
 let windowWidth = window.screen.width;
 let windowHeight = window.screen.height;
 let winner;
-document
-.querySelector("#blackjack-hit-button")
-.addEventListener("click", blackjackHit)
+
+document.querySelector("#blackjack-hit-button").addEventListener("click", blackjackHit);
+document.querySelector('#blackjack-stand-button').addEventListener('click', blackjackStand);
 
 function blackjackHit(){
     if(blackjackGame['isStand'] === false){
@@ -127,4 +127,28 @@ function updateScore(card, activePlayer) {
       {
           document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
       }
+  }
+
+  function blackjackStand()
+  {
+      if(blackjackGame.pressOnce === false){
+          blackjackGame['isStand'] = true;
+          let yourImages = document.querySelector('#your-box').querySelectorAll('img');
+      
+
+      for(let i = 0; i < yourImages.length; i++){
+          let card = randomCard();
+          showCard(card,DEALER);
+          updateScore(card,DEALER);
+          showScore(DEALER);
+      }
+
+      blackJackGame['isTurnsOver'] = true;
+
+      computeWinner();
+      showWinner(winner);
+    }
+
+    blackJackGame.pressOnce = true;
+
   }
